@@ -1,0 +1,89 @@
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #121212;
+      color: #ffffff;
+    }
+
+    header {
+      background: linear-gradient(to bottom right, #1f1f1f, #2a2a2a);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .logo {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #00d1b2;
+      margin-bottom: 1rem;
+    }
+
+    .headline {
+      font-size: 2.8rem;
+      font-weight: 600;
+      max-width: 800px;
+      margin-bottom: 1rem;
+    }
+
+    .subheadline {
+      font-size: 1.2rem;
+      color: #aaaaaa;
+      max-width: 600px;
+      margin-bottom: 2rem;
+    }
+
+    .cta-button {
+      background-color: #00d1b2;
+      color: #121212;
+      padding: 0.9rem 2rem;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s;
+      margin-bottom: 1rem;
+      text-align: center;
+      margin-top: 1rem;
+      text-decoration-color: #121212;
+
+    }
+
+    .cta-button:hover {
+      background-color: #00bfa1;
+    }
+
+    .search-bar {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 600px;
+    }
+
+    .search-bar input, .search-bar select {
+      padding: 0.8rem 1rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      background-color: #2f2f2f;
+      color: #fff;
+      width: 48%;
+      min-width: 200px;
+    }
+
+    .search-bar input::placeholder {
+      color: #999;
+    }
+  

@@ -1,0 +1,88 @@
+
+    * {
+      margin: 0;
+      padding:0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #121212;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .auth-container {
+      background-color: #1f1f1f;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0, 209, 178, 0.2);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .auth-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .auth-header h2 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      color: #00d1b2;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    input {
+      padding: 0.75rem 1rem;
+      margin-bottom: 1rem;
+      border: none;
+      border-radius: 8px;
+      background-color: #2d2d2d;
+      color: #fff;
+      font-size: 1rem;
+    }
+
+    input::placeholder {
+      color: #aaa;
+    }
+
+    .auth-btn {
+      background-color: #00d1b2;
+      color: #121212;
+      border: none;
+      padding: 0.75rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .auth-btn:hover {
+      background-color: #00bfa1;
+    }
+
+    .toggle-link {
+      margin-top: 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+
+    .toggle-link a {
+      color: #00d1b2;
+      text-decoration: none;
+    }
+
+    .toggle-link a:hover {
+      text-decoration: underline;
+    }
+    

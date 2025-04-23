@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HomeyHub - Indore Listings</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="listing.css">
+</head>
+<body>
+
+  <nav>
+    <div class="logo">🏡 HomeyHub</div>
+    <ul>
+      <li><a href="page3.html">Home</a></li>
+      <li><a href="listing.html">Listings</a></li>
+      <li><a href="page2.html">Login & Sign Up</a></li>
+      <li><a href="subscribtion.html">subscriptbtion</a></li>
+    </ul>
+  </nav>
+
+  <div class="filters">
+    <input type="text" id="searchInput" placeholder="Search by type, city, or price">
+    <select id="locationFilter">
+      <option value="">All Locations</option>
+      <option value="Vijay Nagar">Vijay Nagar</option>
+      <option value="Rajwada">Rajwada</option>
+      <option value="Palasia">Palasia</option>
+      <option value="MG Road">MG Road</option>
+      <option value="Bhanwarkuan">Bhanwarkuan</option>
+    </select>
+    <select id="priceFilter">
+      <option value="">All Prices</option>
+      <option value="5000">Below ₹5,000</option>
+      <option value="10000">Below ₹10,000</option>
+      <option value="20000">Below ₹20,000</option>
+    </select>
+  </div>
+
+  <div class="title">Explore 50 Rental Properties</div>
+
+
+  <div class="grid" id="propertyGrid"></div>
+  <a href="subscribtion.html" class="subscribe-btn">View Subscription Plans</a>
+
+  <footer>
+    &copy; 2025 HomeyHub. All rights reserved.
+  </footer>
+
+  <script>
+    const propertyTemplates = [
+      {
+        name: "Cozy Room",
+        type: "Room",
+        city: "Vijay Nagar",
+        price: 4000,
+        description: "Private room with WiFi, bed, and study table. Ideal for students.",
+        image: "bedroom"
+      },
+      {
+        name: "Modern Flat",
+        type: "Flat",
+        city: "Palasia",
+        price: 12000,
+        description: "2 BHK flat with modular kitchen and balcony in central Indore.",
+        image: "apartment"
+      },
+      {
+        name: "Startup Office",
+        type: "Office",
+        city: "MG Road",
+        price: 15000,
+        description: "Fully furnished office space with conference room and AC.",
+        image: "office"
+      },
+      {
+        name: "Boys Hostel",
+        type: "Hostel",
+        city: "Rajwada",
+        price: 3500,
+        description: "Shared accommodation with food and laundry services included.",
+        image: "hostel"
+      },
+      {
+        name: "Shop Space",
+        type: "Commercial Apartment",
+        city: "Bhanwarkuan",
+        price: 20000,
+        description: "Prime commercial space perfect for retail and showrooms.",
+        image: "building"
+      }
+    ];
+
+    const grid = document.getElementById("propertyGrid");
+
+    for (let i = 1; i <= 50; i++) {
+      const prop = propertyTemplates[i % propertyTemplates.length];
+      const card = document.createElement("div");
+      card.className = "card";
+      card.setAttribute("data-search", `${prop.name} ${prop.type} ${prop.city} ${prop.price}`);
+
+      card.innerHTML = `
+        <div class="card-inner">
+          <div class="card-front">
+            <img src="https://source.unsplash.com/400x300/?${prop.image}&sig=${i}" alt="${prop.name}">
+            <div class="card-content">
+              <h3>${prop.name} #${i}</h3>
+              <p>${prop.type} · ${prop.city}</p>
+              <p>₹${prop.price.toLocaleString()}/month</p>
+            </div>
+          </div>
+          <div class="card-back">
+            <h4>${prop.name}</h4>
+            <p><strong>Type:</strong> ${prop.type}</p>
+            <p><strong>City:</strong> ${prop.city}</p>
+            <p><strong>Rent:</strong> ₹${prop.price.toLocaleString()}/month</p>
+            <p>${prop.description}</p>
+          </div>
+        </div>
+      `;
+      grid.appendChild(card);
+    }
+
+    const searchInput = document.getElementById("searchInput");
+    const locationFilter = document.getElementById("locationFilter");
+    const priceFilter = document.getElementById("priceFilter");
+
+    function filterCards() {
+      const query = searchInput.value.toLowerCase();
+      const location = locationFilter.value.toLowerCase();
+      const maxPrice = parseInt(priceFilter.value || 999999);
+
+      document.querySelectorAll(".card").forEach(card => {
+        const data = card.getAttribute("data-search").toLowerCase();
+        const priceMatch = data.match(/(\d+)/);
+        const price = priceMatch ? parseInt(priceMatch[0]) : 0;
+
+        const matchesQuery = data.includes(query);
+        const matchesLocation = location === "" || data.includes(location);
+        const matchesPrice = isNaN(maxPrice) || price <= maxPrice;
+
+        card.style.display = (matchesQuery && matchesLocation && matchesPrice) ? "block" : "none";
+      });
+    }
+
+    searchInput.addEventListener("input", filterCards);
+    locationFilter.addEventListener("change", filterCards);
+    priceFilter.addEventListener("change", filterCards);
+  </script>
+
+</body>
+</html>
